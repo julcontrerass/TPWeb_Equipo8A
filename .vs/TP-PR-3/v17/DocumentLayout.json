@@ -1,7 +1,24 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Xxjul\\OneDrive\\Escritorio\\TP-PR-3\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D9780573-C8CC-4A8D-803F-4D719C179157}|accesoDatos\\accesoDatos.csproj|c:\\users\\juani\\onedrive\\desktop\\tp2progrmacion3\\accesodatos\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9780573-C8CC-4A8D-803F-4D719C179157}|accesoDatos\\accesoDatos.csproj|solutionrelative:accesodatos\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FE9869E4-8425-4C79-9F05-A41EEF78DE89}|negocio\\negocio.csproj|c:\\users\\juani\\onedrive\\desktop\\tp2progrmacion3\\negocio\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FE9869E4-8425-4C79-9F05-A41EEF78DE89}|negocio\\negocio.csproj|solutionrelative:negocio\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1F971DE-DDCE-4252-99D2-37A7004A41AB}|dominio\\dominio.csproj|c:\\users\\juani\\onedrive\\desktop\\tp2progrmacion3\\dominio\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1F971DE-DDCE-4252-99D2-37A7004A41AB}|dominio\\dominio.csproj|solutionrelative:dominio\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{448F2309-2636-4467-94B8-C8728AED20E8}|Promocioncomercio\\Promocioncomercio.csproj|c:\\users\\juani\\onedrive\\desktop\\tp2progrmacion3\\promocioncomercio\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{448F2309-2636-4467-94B8-C8728AED20E8}|Promocioncomercio\\Promocioncomercio.csproj|solutionrelative:promocioncomercio\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,19 +26,59 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\accesoDatos\\Class1.cs",
+              "RelativeDocumentMoniker": "accesoDatos\\Class1.cs",
+              "ToolTip": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\accesoDatos\\Class1.cs",
+              "RelativeToolTip": "accesoDatos\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T15:55:14.901Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\negocio\\Class1.cs",
+              "RelativeDocumentMoniker": "negocio\\Class1.cs",
+              "ToolTip": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\negocio\\Class1.cs",
+              "RelativeToolTip": "negocio\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T15:39:08.167Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\dominio\\Class1.cs",
+              "RelativeDocumentMoniker": "dominio\\Class1.cs",
+              "ToolTip": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\dominio\\Class1.cs",
+              "RelativeToolTip": "dominio\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T15:31:24.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Default.aspx",
+              "DocumentMoniker": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\Promocioncomercio\\Default.aspx",
+              "RelativeDocumentMoniker": "Promocioncomercio\\Default.aspx",
+              "ToolTip": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\Promocioncomercio\\Default.aspx",
+              "RelativeToolTip": "Promocioncomercio\\Default.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-02T15:25:56.297Z",
+              "EditorCaption": ""
             }
           ]
         }
