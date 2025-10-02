@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{448F2309-2636-4467-94B8-C8728AED20E8}|Promocioncomercio\\Promocioncomercio.csproj|C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\promocioncomercio\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{448F2309-2636-4467-94B8-C8728AED20E8}|Promocioncomercio\\Promocioncomercio.csproj|solutionrelative:promocioncomercio\\default.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Default.aspx",
+              "DocumentMoniker": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\Promocioncomercio\\Default.aspx",
+              "RelativeDocumentMoniker": "Promocioncomercio\\Default.aspx",
+              "ToolTip": "C:\\Users\\juani\\OneDrive\\Desktop\\Tp2Progrmacion3\\Promocioncomercio\\Default.aspx",
+              "RelativeToolTip": "Promocioncomercio\\Default.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-02T15:25:56.297Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

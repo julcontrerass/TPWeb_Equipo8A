@@ -1,0 +1,9 @@
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\accesoDatos\bin\Debug\accesoDatos.dll
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\accesoDatos\bin\Debug\accesoDatos.pdb
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\accesoDatos\bin\Debug\dominio.dll
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\accesoDatos\bin\Debug\dominio.pdb
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\accesoDatos\obj\Debug\accesoDatos.csproj.AssemblyReference.cache
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\accesoDatos\obj\Debug\accesoDatos.csproj.CoreCompileInputs.cache
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\accesoDatos\obj\Debug\accesoDa.B3E43C14.Up2Date
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\accesoDatos\obj\Debug\accesoDatos.dll
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\accesoDatos\obj\Debug\accesoDatos.pdb

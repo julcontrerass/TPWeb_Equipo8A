@@ -72,3 +72,7 @@ C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\Promocioncomercio\obj\Debug\Prom
 C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\Promocioncomercio\obj\Debug\Promocio.B485EE0B.Up2Date
 C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\Promocioncomercio\obj\Debug\Promocioncomercio.dll
 C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\Promocioncomercio\obj\Debug\Promocioncomercio.pdb
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\Promocioncomercio\bin\dominio.dll
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\Promocioncomercio\bin\negocio.dll
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\Promocioncomercio\bin\dominio.pdb
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\Promocioncomercio\bin\negocio.pdb

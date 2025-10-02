@@ -1,0 +1,11 @@
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\negocio\bin\Debug\negocio.dll
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\negocio\bin\Debug\negocio.pdb
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\negocio\bin\Debug\accesoDatos.dll
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\negocio\bin\Debug\dominio.dll
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\negocio\bin\Debug\accesoDatos.pdb
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\negocio\bin\Debug\dominio.pdb
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\negocio\obj\Debug\negocio.csproj.Up2Date
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\negocio\obj\Debug\negocio.dll
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\negocio\obj\Debug\negocio.pdb
