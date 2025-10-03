@@ -6,7 +6,8 @@
         <p>INGRESÁ EL CÓDIGO DEL VOUCHER</p>
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <br />
-        <asp:Button ID="Button1" runat="server" Text="SIGUIENTE" />
+        <br />
+        <asp:Button ID="Button1" runat="server" Text="SIGUIENTE" OnClick="Button1_Click" />
     </main>
 
 </asp:Content>
