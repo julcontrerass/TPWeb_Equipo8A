@@ -100,7 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IngresoDatos.aspx" />
-    <Content Include="registroCliente.aspx" />
+    <Content Include="seleccionarProducto.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -192,12 +192,12 @@
       <DependentUpon>IngresoDatos.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="registroCliente.aspx.cs">
-      <DependentUpon>registroCliente.aspx</DependentUpon>
+    <Compile Include="seleccionarProducto.aspx.cs">
+      <DependentUpon>seleccionarProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="registroCliente.aspx.designer.cs">
-      <DependentUpon>registroCliente.aspx</DependentUpon>
+    <Compile Include="seleccionarProducto.aspx.designer.cs">
+      <DependentUpon>seleccionarProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -247,6 +247,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\accesoDatos\accesoDatos.csproj">
+      <Project>{d9780573-c8cc-4a8d-803f-4d719c179157}</Project>
+      <Name>accesoDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\dominio\dominio.csproj">
       <Project>{c1f971de-ddce-4252-99d2-37a7004a41ab}</Project>
       <Name>dominio</Name>

@@ -154,3 +154,5 @@ C:\Users\Xxjul\OneDrive\Escritorio\Tp2Progrmacion3\Promocioncomercio\obj\Debug\P
 C:\Users\Xxjul\OneDrive\Escritorio\Tp2Progrmacion3\Promocioncomercio\obj\Debug\Promocio.B485EE0B.Up2Date
 C:\Users\Xxjul\OneDrive\Escritorio\Tp2Progrmacion3\Promocioncomercio\obj\Debug\Promocioncomercio.dll
 C:\Users\Xxjul\OneDrive\Escritorio\Tp2Progrmacion3\Promocioncomercio\obj\Debug\Promocioncomercio.pdb
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\Promocioncomercio\bin\accesoDatos.dll
+C:\Users\juani\OneDrive\Desktop\Tp2Progrmacion3\Promocioncomercio\bin\accesoDatos.pdb
