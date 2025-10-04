@@ -15,8 +15,6 @@
 x64/
 **/[Bb]in/
 **/[Oo]bj/
-!Promocioncomercio/bin/roslyn/vbc.exe
-!Promocioncomercio/bin/roslyn/csc.exe
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
