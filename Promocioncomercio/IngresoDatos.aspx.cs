@@ -71,6 +71,8 @@ namespace Promocioncomercio
             try
             {
                 ClienteNegocio negocio = new ClienteNegocio();
+                Cliente nuevoCliente = new Cliente();
+
 
                 // Verificar si el DNI ya existe en la base de datos
                 Cliente clienteExistente = negocio.BuscarPorDNI(tbxDNI.Text.Trim());
@@ -78,7 +80,6 @@ namespace Promocioncomercio
                 // Solo agregar el cliente si no existe en la base de datos
                 if (clienteExistente == null)
                 {
-                    Cliente nuevoCliente = new Cliente();
                     nuevoCliente.Documento = tbxDNI.Text;
                     nuevoCliente.Nombre = tbxNombre.Text;
                     nuevoCliente.Apellido = tbxApellido.Text;
@@ -88,6 +89,10 @@ namespace Promocioncomercio
                     nuevoCliente.CP = int.Parse(tbxCP.Text);
 
                     negocio.Agregar(nuevoCliente);
+                }
+                else
+                {
+                    nuevoCliente = clienteExistente; // Usar el cliente existente para el correo
                 }
 
                 // Enviar mail de confirmación

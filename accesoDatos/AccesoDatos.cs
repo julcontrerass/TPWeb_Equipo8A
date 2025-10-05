@@ -26,7 +26,7 @@ namespace accesoDatos
 
         public AccesoDatos()
         {
-            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=PROMOS_DB; integrated security=true");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS01; database=PROMOS_DB; integrated security=true");
             comando = new SqlCommand();
         }
 
@@ -34,6 +34,7 @@ namespace accesoDatos
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
+            comando.Parameters.Clear(); 
         }
 
         public void ejecutarLectura()
