@@ -27,6 +27,9 @@ namespace accesoDatos
         public AccesoDatos()
         {
             conexion = new SqlConnection("server=.\\SQLEXPRESS01; database=PROMOS_DB; integrated security=true");
+           // conexion = new SqlConnection("server=192.168.1.17,1433; database=PROMOS_DB;User Id=SA;Password=m^@DfCT8&Y");
+
+
             comando = new SqlCommand();
         }
 
