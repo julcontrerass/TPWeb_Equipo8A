@@ -96,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Exito.aspx" />
     <Content Include="IngresoDatos.aspx" />
     <Content Include="seleccionarProducto.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -181,6 +182,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Exito.aspx.cs">
+      <DependentUpon>Exito.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Exito.aspx.designer.cs">
+      <DependentUpon>Exito.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IngresoDatos.aspx.cs">
       <DependentUpon>IngresoDatos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
