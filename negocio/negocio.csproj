@@ -42,8 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClienteNegocio.cs" />
+
     <Compile Include="ImagenNegocio.cs" />
     <Compile Include="ProductoNegocio.cs" />
+
+    <Compile Include="EmailService.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

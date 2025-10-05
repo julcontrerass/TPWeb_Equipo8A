@@ -56,7 +56,72 @@
         .btn-participar:hover {
             background-color: #0052cc;
         }
+
+        /* Estilos para el mensaje flotante */
+        .toast-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            min-width: 300px;
+            max-width: 500px;
+            padding: 16px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: none;
+            z-index: 9999;
+            animation: slideIn 0.3s ease-out;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .toast-notification.show {
+            display: block;
+        }
+
+        .toast-notification.success {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .toast-notification.error {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .toast-notification.info {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        .toast-notification.hiding {
+            animation: slideOut 0.3s ease-out;
+        }
     </style>
+
+    <!-- Contenedor para mensajes flotantes -->
+    <div id="toast" class="toast-notification"></div>
 
     <main aria-labelledby="title">
         <h2 id="title">Ingresá tus datos</h2>
@@ -118,6 +183,19 @@
     </main>
 
     <script type="text/javascript">
+        function mostrarToast(mensaje, tipo) {
+            var toast = document.getElementById('toast');
+            toast.textContent = mensaje;
+            toast.className = 'toast-notification ' + tipo + ' show';
+
+            setTimeout(function () {
+                toast.classList.add('hiding');
+                setTimeout(function () {
+                    toast.classList.remove('show', 'hiding', tipo);
+                }, 300);
+            }, 4000);
+        }
+
         function validarFormulario() {
             var esValido = true;
 

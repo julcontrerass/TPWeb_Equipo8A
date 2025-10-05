@@ -46,10 +46,8 @@ namespace Promocioncomercio
                     tbxDireccion.Text = cliente.Direccion;
                     tbxCiudad.Text = cliente.Ciudad;
                     tbxCP.Text = cliente.CP.ToString();
-                    
-                   
-                    
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Cliente encontrado. Los datos han sido pre-cargados.');", true);
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "toast", "mostrarToast('Cliente encontrado. Los datos han sido pre-cargados.', 'info');", true);
                 }
                 else
                 {
@@ -64,7 +62,7 @@ namespace Promocioncomercio
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "error", $"alert('Error al buscar cliente: {ex.Message}');", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "toast", $"mostrarToast('Error al buscar cliente: {ex.Message}', 'error');", true);
             }
         }
 
@@ -72,17 +70,39 @@ namespace Promocioncomercio
         {
             try
             {
-                Cliente nuevoCliente = new Cliente();
-                nuevoCliente.Documento = tbxDNI.Text;
-                nuevoCliente.Nombre = tbxNombre.Text;
-                nuevoCliente.Apellido = tbxApellido.Text;
-                nuevoCliente.Email = tbxEmail.Text;
-                nuevoCliente.Direccion = tbxDireccion.Text;
-                nuevoCliente.Ciudad = tbxCiudad.Text;
-                nuevoCliente.CP = int.Parse(tbxCP.Text);
-
                 ClienteNegocio negocio = new ClienteNegocio();
-                negocio.Agregar(nuevoCliente);
+                Cliente nuevoCliente = new Cliente();
+
+
+                // Verificar si el DNI ya existe en la base de datos
+                Cliente clienteExistente = negocio.BuscarPorDNI(tbxDNI.Text.Trim());
+
+                // Solo agregar el cliente si no existe en la base de datos
+                if (clienteExistente == null)
+                {
+                    nuevoCliente.Documento = tbxDNI.Text;
+                    nuevoCliente.Nombre = tbxNombre.Text;
+                    nuevoCliente.Apellido = tbxApellido.Text;
+                    nuevoCliente.Email = tbxEmail.Text;
+                    nuevoCliente.Direccion = tbxDireccion.Text;
+                    nuevoCliente.Ciudad = tbxCiudad.Text;
+                    nuevoCliente.CP = int.Parse(tbxCP.Text);
+
+                    negocio.Agregar(nuevoCliente);
+                }
+                else
+                {
+                    nuevoCliente = clienteExistente; // Usar el cliente existente para el correo
+                }
+
+                // Enviar mail de confirmación
+                EmailService servicioEmail = new EmailService();
+                servicioEmail.armarCorreo(
+                    nuevoCliente.Email,
+                    "Confirmación de Participación",
+                    $"Hola {nuevoCliente.Nombre} {nuevoCliente.Apellido},<br/><br/>" +
+                    $"Nos pondremos en contacto para entregarte el producto que canjeaste.");
+                servicioEmail.enviarCorreo();
 
                 // Redirigir a la página de éxito
                 Response.Redirect("Exito.aspx", false);
@@ -97,5 +117,6 @@ namespace Promocioncomercio
                 throw new Exception("Error al guardar el cliente en la base de datos: " + ex.Message, ex);
             }
         }
+
     }
 }

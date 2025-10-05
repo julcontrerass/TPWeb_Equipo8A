@@ -37,6 +37,7 @@ namespace accesoDatos
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
+            comando.Parameters.Clear(); 
         }
 
         public void ejecutarLectura()
