@@ -58,9 +58,13 @@ namespace accesoDatos
                 conexion.Open();
                 return comando.ExecuteScalar();
             }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error de SQL al ejecutar scalar: " + ex.Message, ex);
+            }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error al ejecutar scalar en la base de datos: " + ex.Message, ex);
             }
             finally
             {
@@ -76,9 +80,13 @@ namespace accesoDatos
                 conexion.Open();
                 comando.ExecuteNonQuery();
             }
+            catch (SqlException ex)
+            {
+                throw new Exception("Error de SQL al ejecutar la acción: " + ex.Message, ex);
+            }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error al ejecutar acción en la base de datos: " + ex.Message, ex);
             }
             finally
             {

@@ -17,6 +17,40 @@ namespace negocio
             datos = new AccesoDatos();
         }
 
+        public Cliente BuscarPorDNI(string dni)
+        {
+            Cliente cliente = null;
+            try
+            {
+                datos.setearConsulta("SELECT Id, Documento, Nombre, Apellido, Email, Direccion, Ciudad, CP FROM Clientes WHERE Documento = @Documento");
+                datos.setearParametro("@Documento", dni);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    cliente = new Cliente();
+                    cliente.Id = (int)datos.Lector["Id"];
+                    cliente.Documento = (string)datos.Lector["Documento"];
+                    cliente.Nombre = (string)datos.Lector["Nombre"];
+                    cliente.Apellido = (string)datos.Lector["Apellido"];
+                    cliente.Email = (string)datos.Lector["Email"];
+                    cliente.Direccion = (string)datos.Lector["Direccion"];
+                    cliente.Ciudad = (string)datos.Lector["Ciudad"];
+                    cliente.CP = (int)datos.Lector["CP"];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en la capa de negocio al buscar cliente por DNI: " + ex.Message, ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return cliente;
+        }
+
         public void Agregar(Cliente nuevo)
         {
             try
@@ -33,7 +67,7 @@ namespace negocio
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error en la parte de negociocliente al agregar cliente: " + ex.Message, ex);
             }
             finally
             {
