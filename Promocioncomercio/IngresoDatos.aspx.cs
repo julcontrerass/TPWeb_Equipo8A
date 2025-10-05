@@ -70,9 +70,15 @@ namespace Promocioncomercio
         {
             try
             {
+                // Obtener el código de voucher de Session
+                string codigoVoucher = Session["CodigoVoucher"] as string;
+                if (string.IsNullOrEmpty(codigoVoucher))
+                {
+                    throw new Exception("No se encontró el código de voucher. Por favor, inicie el proceso nuevamente.");
+                }
+
                 ClienteNegocio negocio = new ClienteNegocio();
                 Cliente nuevoCliente = new Cliente();
-
 
                 // Verificar si el DNI ya existe en la base de datos
                 Cliente clienteExistente = negocio.BuscarPorDNI(tbxDNI.Text.Trim());
@@ -89,11 +95,26 @@ namespace Promocioncomercio
                     nuevoCliente.CP = int.Parse(tbxCP.Text);
 
                     negocio.Agregar(nuevoCliente);
+
+                    // Obtener el Id del cliente recién creado
+                    clienteExistente = negocio.BuscarPorDNI(tbxDNI.Text.Trim());
+                    nuevoCliente = clienteExistente;
                 }
                 else
                 {
-                    nuevoCliente = clienteExistente; // Usar el cliente existente para el correo
+                    nuevoCliente = clienteExistente; // Usar el cliente existente
                 }
+
+                string productoIdStr = Request.QueryString["productoId"];
+                int productoId = 0;
+                if (!string.IsNullOrEmpty(productoIdStr))
+                {
+                    productoId = int.Parse(productoIdStr);
+                }
+
+                // Actualizar el voucher existente
+                VoucherNegocio voucherNegocio = new VoucherNegocio();
+                voucherNegocio.ActualizarVoucher(codigoVoucher, nuevoCliente.Id, productoId);
 
                 // Enviar mail de confirmación
                 EmailService servicioEmail = new EmailService();
@@ -101,8 +122,12 @@ namespace Promocioncomercio
                     nuevoCliente.Email,
                     "Confirmación de Participación",
                     $"Hola {nuevoCliente.Nombre} {nuevoCliente.Apellido},<br/><br/>" +
-                    $"Nos pondremos en contacto para entregarte el producto que canjeaste.");
+                    $"Nos pondremos en contacto para entregarte el producto que canjeaste.<br/><br/>" +
+                    $"Tu código de voucher es: <strong>{codigoVoucher}</strong>");
                 servicioEmail.enviarCorreo();
+
+                // Limpiar la session
+                Session.Remove("CodigoVoucher");
 
                 // Redirigir a la página de éxito
                 Response.Redirect("Exito.aspx", false);

@@ -48,6 +48,8 @@
 
     <Compile Include="EmailService.cs" />
 
+    <Compile Include="VoucherNegocio.cs" />
+
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using accesoDatos;
+using negocio;
 
 namespace Promocioncomercio
 {
@@ -24,26 +24,29 @@ namespace Promocioncomercio
                 return;
             }
 
-            AccesoDatos datos = new AccesoDatos();
+            VoucherNegocio voucherNegocio = new VoucherNegocio();
             try
             {
-                // Consulta a la tabla Vouchers con la columna CodigoVoucher
-                datos.setearConsulta("SELECT COUNT(*) FROM Vouchers WHERE CodigoVoucher = @codigo");
-                datos.Comando.Parameters.Clear();
-                datos.Comando.Parameters.AddWithValue("@codigo", codigoIngresado);
-
-                object resultado = datos.ejecutarScalar();
-                int cantidad = Convert.ToInt32(resultado);
-
-                if (cantidad > 0)
+                // Verificar que el voucher existe Y que no haya sido usado
+                if (voucherNegocio.ExisteYNoUsado(codigoIngresado))
                 {
-                    //si el codigo está en la bdd, entonces vamos a la pagina
+                    // Guardar el código en Session para usarlo después
+                    Session["CodigoVoucher"] = codigoIngresado;
+
+                    //si el codigo está en la bdd y no fue usado, vamos a la pagina
                     Response.Redirect("seleccionarProducto.aspx");
                 }
                 else
                 {
-                    //si el codigo no está en la bdd, mostramos este cartel
-                    lblMensaje.Text = "El código ingresado no es válido";
+                    // Verificar si el código existe pero ya fue usado
+                    if (voucherNegocio.Existe(codigoIngresado))
+                    {
+                        lblMensaje.Text = "Este código ya fue utilizado";
+                    }
+                    else
+                    {
+                        lblMensaje.Text = "El código ingresado no es válido";
+                    }
                 }
             }
             catch (Exception ex)
@@ -51,11 +54,6 @@ namespace Promocioncomercio
                 lblMensaje.Text = "Estamos en mantenimiento actualmente. Intente más tarde.";
                 // opcional: guardar el error en un log
                 System.Diagnostics.Debug.WriteLine("Error en Default.aspx: " + ex.ToString());
-
-            }
-            finally
-            {
-                datos.cerrarConexion();
             }
 
         }
