@@ -17,17 +17,18 @@ namespace Promocioncomercio
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string codigoIngresado = TextBox1.Text.Trim();//trim para eliminar espacios en blanco
+            string codigoIngresado = TextBox1.Text.Trim();
+
             if (string.IsNullOrEmpty(codigoIngresado))
             {
-                lblMensaje.Text = "Debe ingresar un código";
+                TextBox1.CssClass = "input-error";
+                ScriptManager.RegisterStartupScript(this, GetType(), "errorMsg", "document.getElementById('errorCodigo').textContent = 'Debe ingresar un código';" + "document.getElementById('errorCodigo').style.display = 'block';", true);
                 return;
             }
 
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                // Consulta a la tabla Vouchers con la columna CodigoVoucher
                 datos.setearConsulta("SELECT COUNT(*) FROM Vouchers WHERE CodigoVoucher = @codigo");
                 datos.Comando.Parameters.Clear();
                 datos.Comando.Parameters.AddWithValue("@codigo", codigoIngresado);
@@ -37,27 +38,26 @@ namespace Promocioncomercio
 
                 if (cantidad > 0)
                 {
-                    //si el codigo está en la bdd, entonces vamos a la pagina
+                    TextBox1.CssClass = "input-valid";
                     Response.Redirect("seleccionarProducto.aspx");
                 }
                 else
                 {
-                    //si el codigo no está en la bdd, mostramos este cartel
-                    lblMensaje.Text = "El código ingresado no es válido";
+                    TextBox1.CssClass = "input-error";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "errorMsg", "document.getElementById('errorCodigo').textContent = 'El código ingresado no es válido';" + "document.getElementById('errorCodigo').style.display = 'block';" + "mostrarToast('El código ingresado no es válido', 'error');", true);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                lblMensaje.Text = "Estamos en mantenimiento actualmente. Intente más tarde.";
-                // opcional: guardar el error en un log
-                System.Diagnostics.Debug.WriteLine("Error en Default.aspx: " + ex.ToString());
-
+                TextBox1.CssClass = "input-error";
+                ScriptManager.RegisterStartupScript(this, GetType(), "errorMsg","document.getElementById('errorCodigo').textContent = 'Estamos en mantenimiento actualmente. Intente más tarde.';" + "document.getElementById('errorCodigo').style.display = 'block';" + "mostrarToast('Estamos en mantenimiento actualmente. Intente más tarde.', 'error');", true);
             }
             finally
             {
                 datos.cerrarConexion();
             }
-
         }
+
+
     }
 }
