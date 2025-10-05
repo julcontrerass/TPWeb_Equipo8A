@@ -1,19 +1,64 @@
 ﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="seleccionarProducto.aspx.cs" Inherits="Promocioncomercio.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <main aria-labelledby="title">
-        <h2 id="title"><%: Title %>.</h2>
-        <h3>Your contact page.</h3>
-        <address>
-            One Microsoft Way<br />
-            Redmond, WA 98052-6399<br />
-            <abbr title="Phone">P:</abbr>
-            425.555.0100
-        </address>
+    <style>
+        .img-producto {
+            width: 100%;
+            max-height: 450px; 
+            object-fit: cover; 
+            border-radius: 10px; 
+        }
+    </style>
 
-        <address>
-            <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-            <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-        </address>
-    </main>
+   <h2 id="title">Elegí el producto!</h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <%
+        foreach (dominio.Producto producto in ListadoProductos)
+        {
+    %>
+    <div class="col">
+        <div class="card">
+
+           
+            <div id="carousel<%: producto.Id %>" class="carousel slide" data-bs-ride="false">
+                <div class="carousel-inner">
+                    <%
+                        bool isFirstImage = true;
+                        foreach (dominio.Imagen imagen in producto.imagenes)
+                        {
+                    %>
+                    <div class="carousel-item <%= isFirstImage ? "active" : "" %>">
+                        <img src="<%: imagen.URL %>" class="img-producto" alt="imagen Producto">
+                    </div>
+                    <%
+                            isFirstImage = false;
+                        }
+                    %>
+                </div>
+
+              
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%: producto.Id %>" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel<%: producto.Id %>" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+
+            
+            <div class="card-body">
+                <h5 class="card-title"><%: producto.Nombre %></h5>
+                <p class="card-text"><%: producto.Descripcion %></p>
+                <button type="button" class="btn btn-primary">Elegir</button>
+            </div>
+
+        </div>
+    </div>
+    <%
+        }
+    %>
+    </div>
+    
 </asp:Content>
