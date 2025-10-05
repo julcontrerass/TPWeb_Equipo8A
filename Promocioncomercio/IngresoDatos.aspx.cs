@@ -84,6 +84,15 @@ namespace Promocioncomercio
                 ClienteNegocio negocio = new ClienteNegocio();
                 negocio.Agregar(nuevoCliente);
 
+                // Enviar mail de confirmación
+                EmailService servicioEmail = new EmailService();
+                servicioEmail.armarCorreo(
+                    nuevoCliente.Email,
+                    "Confirmación de Participación",
+                    $"Hola {nuevoCliente.Nombre} {nuevoCliente.Apellido},<br/><br/>" +
+                    $"Nos pondremos en contacto para entregarte el producto que canjeaste.");
+                servicioEmail.enviarCorreo();
+
                 // Redirigir a la página de éxito
                 Response.Redirect("Exito.aspx", false);
                 Context.ApplicationInstance.CompleteRequest();
@@ -97,5 +106,6 @@ namespace Promocioncomercio
                 throw new Exception("Error al guardar el cliente en la base de datos: " + ex.Message, ex);
             }
         }
+
     }
 }
