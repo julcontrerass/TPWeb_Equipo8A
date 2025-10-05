@@ -10,7 +10,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace negocio
 {
-    internal class ImagenService
+    internal class ImagenNegocio
     {
 
         public List<Imagen> Listar(int id)

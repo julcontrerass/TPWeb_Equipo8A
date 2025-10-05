@@ -50,7 +50,7 @@ namespace negocio
                     producto.Precio = (decimal)datos.Lector["precio"];
                     producto.Marca = (string)datos.Lector["Marca"];
                     string UrlImg = (string)datos.Lector["ImagenUrl"];
-                    ImagenService imagenService = new ImagenService();
+                    ImagenNegocio imagenService = new ImagenNegocio();
                     List<Imagen> listaImagenes = imagenService.Listar(producto.Id);
                     producto.imagenes = listaImagenes;
                     idProdAnterior = producto.Id;
