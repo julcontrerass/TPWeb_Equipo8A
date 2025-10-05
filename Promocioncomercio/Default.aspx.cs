@@ -24,7 +24,7 @@ namespace Promocioncomercio
                 return;
             }
 
-            VoucherNegocio voucherNegocio = new VoucherNegocio();
+            AccesoDatos datos = new AccesoDatos();
             try
             {
                 // Verificar que el voucher existe Y que no haya sido usado
@@ -55,7 +55,8 @@ namespace Promocioncomercio
                 // opcional: guardar el error en un log
                 System.Diagnostics.Debug.WriteLine("Error en Default.aspx: " + ex.ToString());
             }
-
         }
+
+
     }
 }
