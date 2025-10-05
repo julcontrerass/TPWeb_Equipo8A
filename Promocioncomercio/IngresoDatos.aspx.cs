@@ -46,10 +46,8 @@ namespace Promocioncomercio
                     tbxDireccion.Text = cliente.Direccion;
                     tbxCiudad.Text = cliente.Ciudad;
                     tbxCP.Text = cliente.CP.ToString();
-                    
-                   
-                    
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Cliente encontrado. Los datos han sido pre-cargados.');", true);
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "toast", "mostrarToast('Cliente encontrado. Los datos han sido pre-cargados.', 'info');", true);
                 }
                 else
                 {
@@ -64,7 +62,7 @@ namespace Promocioncomercio
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "error", $"alert('Error al buscar cliente: {ex.Message}');", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "toast", $"mostrarToast('Error al buscar cliente: {ex.Message}', 'error');", true);
             }
         }
 
@@ -72,17 +70,25 @@ namespace Promocioncomercio
         {
             try
             {
-                Cliente nuevoCliente = new Cliente();
-                nuevoCliente.Documento = tbxDNI.Text;
-                nuevoCliente.Nombre = tbxNombre.Text;
-                nuevoCliente.Apellido = tbxApellido.Text;
-                nuevoCliente.Email = tbxEmail.Text;
-                nuevoCliente.Direccion = tbxDireccion.Text;
-                nuevoCliente.Ciudad = tbxCiudad.Text;
-                nuevoCliente.CP = int.Parse(tbxCP.Text);
-
                 ClienteNegocio negocio = new ClienteNegocio();
-                negocio.Agregar(nuevoCliente);
+
+                // Verificar si el DNI ya existe en la base de datos
+                Cliente clienteExistente = negocio.BuscarPorDNI(tbxDNI.Text.Trim());
+
+                // Solo agregar el cliente si no existe en la base de datos
+                if (clienteExistente == null)
+                {
+                    Cliente nuevoCliente = new Cliente();
+                    nuevoCliente.Documento = tbxDNI.Text;
+                    nuevoCliente.Nombre = tbxNombre.Text;
+                    nuevoCliente.Apellido = tbxApellido.Text;
+                    nuevoCliente.Email = tbxEmail.Text;
+                    nuevoCliente.Direccion = tbxDireccion.Text;
+                    nuevoCliente.Ciudad = tbxCiudad.Text;
+                    nuevoCliente.CP = int.Parse(tbxCP.Text);
+
+                    negocio.Agregar(nuevoCliente);
+                }
 
                 // Enviar mail de confirmación
                 EmailService servicioEmail = new EmailService();
