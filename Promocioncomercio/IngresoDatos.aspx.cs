@@ -112,6 +112,10 @@ namespace Promocioncomercio
                     productoId = int.Parse(productoIdStr);
                 }
 
+                // Obtener el producto seleccionado
+                ProductoNegocio productoNegocio = new ProductoNegocio();
+                Producto productoSeleccionado = productoNegocio.BuscarPorId(productoId);
+
                 // Actualizar el voucher existente
                 VoucherNegocio voucherNegocio = new VoucherNegocio();
                 voucherNegocio.ActualizarVoucher(codigoVoucher, nuevoCliente.Id, productoId);
@@ -123,7 +127,8 @@ namespace Promocioncomercio
                     "Confirmación de Participación",
                     $"Hola {nuevoCliente.Nombre} {nuevoCliente.Apellido},<br/><br/>" +
                     $"Nos pondremos en contacto para entregarte el producto que canjeaste.<br/><br/>" +
-                    $"Tu código de voucher es: <strong>{codigoVoucher}</strong>");
+                    $"<strong>Producto seleccionado:</strong> {productoSeleccionado?.Nombre}<br/>" +
+                    $"<strong>Tu código de voucher es:</strong> {codigoVoucher}");
                 servicioEmail.enviarCorreo();
 
                 // Limpiar la session

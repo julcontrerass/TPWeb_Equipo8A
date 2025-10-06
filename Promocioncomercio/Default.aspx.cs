@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,11 +20,10 @@ namespace Promocioncomercio
             string codigoIngresado = TextBox1.Text.Trim();//trim para eliminar espacios en blanco
             if (string.IsNullOrEmpty(codigoIngresado))
             {
-                lblMensaje.Text = "Debe ingresar un código";
                 return;
             }
 
-            AccesoDatos datos = new AccesoDatos();
+            VoucherNegocio voucherNegocio = new VoucherNegocio();
             try
             {
                 // Verificar que el voucher existe Y que no haya sido usado
@@ -41,22 +40,21 @@ namespace Promocioncomercio
                     // Verificar si el código existe pero ya fue usado
                     if (voucherNegocio.Existe(codigoIngresado))
                     {
-                        lblMensaje.Text = "Este código ya fue utilizado";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "toast", "mostrarToast('Este código ya fue utilizado', 'error');", true);
                     }
                     else
                     {
-                        lblMensaje.Text = "El código ingresado no es válido";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "toast", "mostrarToast('El código ingresado no es válido', 'error');", true);
                     }
                 }
             }
             catch (Exception ex)
             {
-                lblMensaje.Text = "Estamos en mantenimiento actualmente. Intente más tarde.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "toast", "mostrarToast('Estamos en mantenimiento actualmente. Intente más tarde.', 'error');", true);
                 // opcional: guardar el error en un log
                 System.Diagnostics.Debug.WriteLine("Error en Default.aspx: " + ex.ToString());
             }
+
         }
-
-
     }
 }
