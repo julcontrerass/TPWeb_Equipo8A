@@ -28,6 +28,12 @@
             
         }
 
+        .background-flechas{
+            border-radius: 10px;
+            padding: 0.5rem;
+            background-color: #555555; 
+        }
+
         </style>
 
    <h2 id="title" class="text-align-center">Elegí el producto!</h2>
@@ -58,11 +64,11 @@
 
               
                 <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%: producto.Id %>" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-prev-icon background-flechas" aria-hidden="true"></span>
                     <span class="visually-hidden">Anterior</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carousel<%: producto.Id %>" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="carousel-control-next-icon background-flechas" aria-hidden="true"></span>
                     <span class="visually-hidden">Siguiente</span>
                 </button>
             </div>
