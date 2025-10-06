@@ -71,8 +71,35 @@ namespace negocio
             return listaProductos;
         }
 
+        public Producto BuscarPorId(int id)
+        {
+            Producto producto = null;
 
+            try
+            {
+                datos.setearConsulta("SELECT Id, Nombre, Descripcion FROM ARTICULOS WHERE Id = @Id");
+                datos.setearParametro("@Id", id);
+                datos.ejecutarLectura();
 
+                if (datos.Lector.Read())
+                {
+                    producto = new Producto();
+                    producto.Id = (int)datos.Lector["Id"];
+                    producto.Nombre = (string)datos.Lector["Nombre"];
+                    producto.Descripcion = (string)datos.Lector["Descripcion"];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al buscar producto por ID: " + ex.Message, ex);
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return producto;
+        }
 
     }
 }

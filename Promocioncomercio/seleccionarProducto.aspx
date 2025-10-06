@@ -71,7 +71,7 @@
             <div class="card-body card-body-flex">
                 <h5 class="card-title"><%: producto.Nombre %></h5>
                 <p class="card-text"><%: producto.Descripcion %></p>
-                <button type="button" class="btn btn-primary btn-center">Elegir</button>
+                <button type="button" class="btn btn-primary" onclick="confirmarProducto('<%: producto.Id %>', '<%: producto.Nombre %>')">Elegir</button>
             </div>
 
         </div>
@@ -80,5 +80,42 @@
         }
     %>
     </div>
-    
+
+    <!-- Modal de confirmación -->
+    <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="modalConfirmacionLabel">Confirmar Producto</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <h5 class="mb-3">¿Estás seguro de elegir este producto?</h5>
+                    <p class="text-muted mb-0 fs-5" id="nombreProductoModal"></p>
+                </div>
+                <div class="modal-footer justify-content-center border-0 pb-4">
+                    <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-primary px-4" id="btnConfirmarSi">Sí, estoy seguro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        let productoSeleccionadoId = null;
+
+        function confirmarProducto(productoId, productoNombre) {
+            productoSeleccionadoId = productoId;
+            document.getElementById('nombreProductoModal').textContent = productoNombre;
+
+            var modal = new bootstrap.Modal(document.getElementById('modalConfirmacion'));
+            modal.show();
+        }
+
+        document.getElementById('btnConfirmarSi').addEventListener('click', function() {
+            if (productoSeleccionadoId) {
+                window.location.href = 'IngresoDatos.aspx?productoId=' + productoSeleccionadoId;
+            }
+        });
+    </script>
 </asp:Content>

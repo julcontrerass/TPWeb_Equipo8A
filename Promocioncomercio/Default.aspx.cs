@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using accesoDatos;
+using negocio;
 
 namespace Promocioncomercio
 {
@@ -17,47 +17,44 @@ namespace Promocioncomercio
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            string codigoIngresado = TextBox1.Text.Trim();
-
+            string codigoIngresado = TextBox1.Text.Trim();//trim para eliminar espacios en blanco
             if (string.IsNullOrEmpty(codigoIngresado))
             {
-                TextBox1.CssClass = "input-error";
-                ScriptManager.RegisterStartupScript(this, GetType(), "errorMsg", "document.getElementById('errorCodigo').textContent = 'Debe ingresar un código';" + "document.getElementById('errorCodigo').style.display = 'block';", true);
                 return;
             }
 
-            AccesoDatos datos = new AccesoDatos();
+            VoucherNegocio voucherNegocio = new VoucherNegocio();
             try
             {
-                datos.setearConsulta("SELECT COUNT(*) FROM Vouchers WHERE CodigoVoucher = @codigo");
-                datos.Comando.Parameters.Clear();
-                datos.Comando.Parameters.AddWithValue("@codigo", codigoIngresado);
-
-                object resultado = datos.ejecutarScalar();
-                int cantidad = Convert.ToInt32(resultado);
-
-                if (cantidad > 0)
+                // Verificar que el voucher existe Y que no haya sido usado
+                if (voucherNegocio.ExisteYNoUsado(codigoIngresado))
                 {
-                    TextBox1.CssClass = "input-valid";
+                    // Guardar el código en Session para usarlo después
+                    Session["CodigoVoucher"] = codigoIngresado;
+
+                    //si el codigo está en la bdd y no fue usado, vamos a la pagina
                     Response.Redirect("seleccionarProducto.aspx");
                 }
                 else
                 {
-                    TextBox1.CssClass = "input-error";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "errorMsg", "document.getElementById('errorCodigo').textContent = 'El código ingresado no es válido';" + "document.getElementById('errorCodigo').style.display = 'block';" + "mostrarToast('El código ingresado no es válido', 'error');", true);
+                    // Verificar si el código existe pero ya fue usado
+                    if (voucherNegocio.Existe(codigoIngresado))
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "toast", "mostrarToast('Este código ya fue utilizado', 'error');", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "toast", "mostrarToast('El código ingresado no es válido', 'error');", true);
+                    }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                TextBox1.CssClass = "input-error";
-                ScriptManager.RegisterStartupScript(this, GetType(), "errorMsg","document.getElementById('errorCodigo').textContent = 'Estamos en mantenimiento actualmente. Intente más tarde.';" + "document.getElementById('errorCodigo').style.display = 'block';" + "mostrarToast('Estamos en mantenimiento actualmente. Intente más tarde.', 'error');", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "toast", "mostrarToast('Estamos en mantenimiento actualmente. Intente más tarde.', 'error');", true);
+                // opcional: guardar el error en un log
+                System.Diagnostics.Debug.WriteLine("Error en Default.aspx: " + ex.ToString());
             }
-            finally
-            {
-                datos.cerrarConexion();
-            }
+
         }
-
-
     }
 }
