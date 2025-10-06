@@ -31,9 +31,10 @@ namespace negocio
                 }
                 return lista;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw new Exception("Error en la capa de negocio al buscar una imagen: " + ex.Message, ex);
+
             }
             finally
             {
